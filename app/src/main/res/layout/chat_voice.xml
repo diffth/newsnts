@@ -7,38 +7,50 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.song.newsnts.MainActivity">
+    tools:context="com.example.song.newsnts.chat_voice">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="지순"
-        android:id="@+id/button_js"
+        android:id="@+id/record"
+        android:text="녹음"
+        android:background="@drawable/round"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="74dp" />
+        android:layout_marginTop="88dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button3"
-        android:layout_below="@+id/button_js"
-        android:layout_centerHorizontal="true" />
+        android:text="녹음 중지"
+        android:id="@+id/stop"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/record" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button4"
-        android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true" />
+        android:text="재생"
+        android:id="@+id/play"
+        android:layout_below="@+id/stop"
+        android:layout_alignStart="@+id/stop" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button5"
-        android:layout_below="@+id/button4"
-        android:layout_centerHorizontal="true" />
+        android:text="재생중지"
+        android:id="@+id/playstop"
+        android:layout_below="@+id/send"
+        android:layout_toEndOf="@+id/record" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="보내기"
+        android:id="@+id/send"
+        android:layout_alignTop="@+id/stop"
+        android:layout_toEndOf="@+id/record" />
+
+
+
 </RelativeLayout>
