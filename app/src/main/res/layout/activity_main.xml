@@ -9,8 +9,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.song.newsnts.MainActivity">
 
-    <TextView
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Button 지순"
+        android:id="@+id/button_js"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 서영"
+        android:id="@+id/button_sy"
+        android:layout_below="@+id/button_js"
+        android:layout_alignLeft="@+id/button_js"
+        android:layout_alignStart="@+id/button_js" />
 </RelativeLayout>
