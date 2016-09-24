@@ -26,4 +26,13 @@
         android:layout_below="@+id/button_js"
         android:layout_alignLeft="@+id/button_js"
         android:layout_alignStart="@+id/button_js" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Planner"
+        android:id="@+id/myplanner"
+        android:layout_below="@+id/button_sy"
+        android:layout_alignLeft="@+id/button_sy"
+        android:layout_alignStart="@+id/button_sy" />
 </RelativeLayout>

@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button button_js;
     Button button_sy;
+    Button myplanner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,12 +18,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button_js = (Button) findViewById(R.id.button_js);
-        button_sy = (Button)findViewById(R.id.button_sy);
+        button_sy = (Button) findViewById(R.id.button_sy);
 
         button_js.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent3 = new Intent(getBaseContext(),com.example.song.newsnts.chat.class);
+                Intent intent3 = new Intent(getBaseContext(), com.example.song.newsnts.chat.class);
                 startActivity(intent3);
             }
         });
@@ -30,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
         button_sy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent4 = new Intent(getBaseContext(),com.example.song.newsnts.SNS.class);
+                Intent intent4 = new Intent(getBaseContext(), com.example.song.newsnts.SNS.class);
                 startActivity(intent4);
             }
         });
+
+    }
 }

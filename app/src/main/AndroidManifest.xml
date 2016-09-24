@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.song.newsnts">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -22,7 +23,12 @@
         <activity android:name=".chat_voice" />
         <activity android:name=".chat_settiing" />
         <activity android:name=".chat" />
-        <activity android:name=".SNS"></activity>
+        <activity android:name=".SNS" />
+        <activity android:name=".Mypage" />
+        <activity android:name=".Mypage_Cardview" />
+        <activity android:name=".Comment" />
+        <activity android:name=".Mypage_Write"></activity>
+        <activity android:name=".Newspeed"></activity>
     </application>
 
 </manifest>
