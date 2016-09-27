@@ -56,7 +56,7 @@
                             android:id="@+id/mypage_Location"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Small Text"
+                            android:text="위치"
                             android:textSize="13dp" />
 
                     </LinearLayout>
@@ -110,7 +110,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/mypage_Img2"
-                        android:text="Small Text" />
+                        android:text="좋아요" />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -132,6 +132,27 @@
                         android:layout_height="wrap_content"
                         android:text="contents" />
                 </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/comment_Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="댓글 더보기"
+                        android:textSize="15dp"/>
+
+                    <ListView
+                        android:id="@+id/mList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                    </ListView>
+
             </LinearLayout>
 
         </LinearLayout>

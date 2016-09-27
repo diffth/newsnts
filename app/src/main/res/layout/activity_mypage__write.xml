@@ -46,40 +46,47 @@
         </LinearLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
-    <ImageView
-        android:id="@+id/photo_imageView"
-        android:layout_width="250dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:onClick="onButton1Clicked"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:gravity="center"
-        android:hint="무엇을 하고 계세요?"/>
+        <ImageView
+            android:id="@+id/photo_imageView"
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:onClick="onButton1Clicked" />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="120dp"
+            android:gravity="center"
+            android:layout_marginTop="3dp"
+            android:hint="무엇을 하고 계세요?" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/photo_Btn"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:text="사진 가져오기"
+            android:layout_marginRight="20dp"
             android:onClick="onButton1Clicked"
-            android:layout_marginRight="20dp"/>
+            android:text="사진 가져오기" />
 
         <Button
             android:id="@+id/ok_Btn"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:text="완료"
-            android:onClick="onButton1Clicked"/>
+            android:onClick="onButton1Clicked"
+            android:text="완료" />
 
     </LinearLayout>
 
