@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.File;
 
@@ -25,6 +26,9 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
     private ImageView mPhotoImageView;
     private Button mButton;
 
+    TextView my_Location;
+    Button ok_Btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +36,27 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
 
         mButton = (Button) findViewById(R.id.photo_Btn);
         mPhotoImageView = (ImageView) findViewById(R.id.photo_imageView);
+        my_Location = (TextView) findViewById(R.id.my_Location);
+        ok_Btn = (Button) findViewById(R.id.ok_Btn);
+
 
         mButton.setOnClickListener(this);
+
+        my_Location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(Mypage_Write.this, Location.class);
+                startActivity(intent2);
+            }
+        });
+
+        ok_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(Mypage_Write.this, Mypage_Cardview.class);
+                startActivity(intent3);
+            }
+        });
     }
     //카메라에서 이미지 가져오기
     private void doTakePhotoAction()
