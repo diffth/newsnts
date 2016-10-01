@@ -7,19 +7,25 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-Button button_js;
+    Button button_js;
+    Button button_sy;
+    Button button_jun;
+    Button button_oh;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         button_js = (Button) findViewById(R.id.button_js);
-        button_js.setOnClickListener(new View.OnClickListener() {
+        button_js.setOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent3 = new Intent(getBaseContext(),com.example.song.newsnts.chat.class);
                 startActivity(intent3);
             }
         });
+
     }
 }

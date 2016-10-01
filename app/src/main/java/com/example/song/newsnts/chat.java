@@ -19,10 +19,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -32,8 +34,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 
 public class chat extends AppCompatActivity {
 
@@ -45,7 +53,7 @@ public class chat extends AppCompatActivity {
     Button prebt;
     Button menubt;
     TextView chatTextview;
-    EditText editText;
+    EditText editText, nametext;
 
     Button image;
     private Context mContext;
@@ -100,10 +108,14 @@ public class chat extends AppCompatActivity {
         });
         sendbt.setOnClickListener(new View.OnClickListener() { //전송버튼
             public void onClick(View v) {
-                String mes = editText.getText().toString();
-                String name = "지순님의 말 : ";
-                String chat = name + mes;
-                chatTextview.setText(chat);
+           //     String chat_mes = editText.getText().toString();
+
+                insert();
+               // String chat_name = nametext.getText().toString();//이 두개 변수로 디비에 넘겨야함
+
+             //   String name = "지순님의 말 : ";
+                //String chat = name + chat_mes;
+                //chatTextview.setText(chat);
 
             }
         });
@@ -552,5 +564,68 @@ public class chat extends AppCompatActivity {
 
     }
 
+    public void insert() {
+
+        String msg = editText.getText().toString();
+
+        insertToDatabase(msg);
+    }
+
+    private void insertToDatabase(String msg){
+        class InsertData extends AsyncTask<String, Void, String> {
+            //   ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                //   loading = ProgressDialog.show(userFormView.this, "Please Wait", null, true, true);
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                try{
+                    String msg = (String)params[0];
+
+
+                    String link="http://52.69.109.184/chattest.php";
+                    String data = URLEncoder.encode("msg", "UTF-8") + "=" + URLEncoder.encode(msg, "UTF-8");
+
+
+                    Log.i("확인", data+"\n" );
+
+                    URL url = new URL(link);
+                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                    conn.setDoInput(true);
+                    conn.setDoOutput(true);
+                    OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+                    wr.write( data );
+                    Log.i("확인", data+"\n");
+                    wr.flush();
+
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    StringBuilder sb = new StringBuilder();
+                    String line = null;
+
+                    // Read Server Response
+                    while((line = reader.readLine()) != null)
+                    {
+                        sb.append(line);
+                        break;
+                    }
+                    Log.i("확인", sb.toString());
+                    return sb.toString();
+                }catch(Exception e){
+                    return new String("Exception: " + e.getMessage());
+                }
+
+            }
+        }
+
+        InsertData task = new InsertData();
+        task.execute(msg);
+    }
 
 }
