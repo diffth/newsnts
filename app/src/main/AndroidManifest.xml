@@ -23,7 +23,6 @@
         <activity android:name=".chat_voice" />
         <activity android:name=".chat_settiing" />
         <activity android:name=".chat" />
-        <activity android:name=".SNS" />
         <activity android:name=".Mypage" />
         <activity android:name=".Mypage_Cardview" />
         <activity android:name=".Comment" />
