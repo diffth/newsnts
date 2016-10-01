@@ -28,12 +28,5 @@ public class Mypage_Cardview extends AppCompatActivity {
             }
         });
 
-        mList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent2 = new Intent(Mypage_Cardview.this, Comment.class);
-                startActivity(intent2);
-            }
-        });
     }
 }

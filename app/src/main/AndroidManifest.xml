@@ -27,8 +27,9 @@
         <activity android:name=".Mypage" />
         <activity android:name=".Mypage_Cardview" />
         <activity android:name=".Comment" />
-        <activity android:name=".Mypage_Write"></activity>
-        <activity android:name=".Newspeed"></activity>
+        <activity android:name=".Mypage_Write" />
+        <activity android:name=".Newspeed" />
+        <activity android:name=".Location"></activity>
     </application>
 
 </manifest>
