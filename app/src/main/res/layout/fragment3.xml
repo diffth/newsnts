@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    tools:context="com.example.song.newsnts.Fragment3">
 
-    <Button
+    <ImageView
+        android:id="@+id/profile_Img"
+        android:layout_marginTop="70dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/sns_Txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="세번째"
-        android:id="@+id/button" />
+        android:text="김서영님 환영합니다!"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"/>
+
+    <Button
+        android:id="@+id/mypage_Btn"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="마이 페이지"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/newspeed_Btn"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="뉴스피드"
+        android:textStyle="bold"
+        android:textSize="20dp" />
+
 </LinearLayout>
