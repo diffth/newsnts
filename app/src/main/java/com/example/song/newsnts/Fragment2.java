@@ -22,6 +22,15 @@ public class Fragment2 extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment2, container, false);
 
 
+        button = (Button) rootView.findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),com.example.song.newsnts.chat.class);
+                startActivity(intent);
+            }
+        });
 
 
         return rootView;
