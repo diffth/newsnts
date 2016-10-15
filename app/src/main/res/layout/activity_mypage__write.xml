@@ -60,9 +60,13 @@
             android:onClick="onButton1Clicked" />
 
         <TextView
+            android:id="@+id/write_Txt"
             android:layout_width="350dp"
             android:layout_height="120dp"
             android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="5dp"
             android:layout_marginTop="3dp"
             android:hint="무엇을 하고 계세요?" />
     </LinearLayout>

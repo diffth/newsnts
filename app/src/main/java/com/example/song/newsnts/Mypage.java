@@ -47,4 +47,5 @@ public class Mypage extends Activity {
             }
         });
     }
+
 }

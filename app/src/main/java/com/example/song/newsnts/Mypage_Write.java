@@ -11,8 +11,10 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -25,9 +27,14 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
     private Uri mImageCaptureUri;
     private ImageView mPhotoImageView;
     private Button mButton;
+    public static String value = "";
 
     TextView my_Location;
     Button ok_Btn;
+    TextView write_Txt;
+    ImageView photo_imageView;
+    EditText dialog_edit;
+    Button photo_Btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,9 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
         mPhotoImageView = (ImageView) findViewById(R.id.photo_imageView);
         my_Location = (TextView) findViewById(R.id.my_Location);
         ok_Btn = (Button) findViewById(R.id.ok_Btn);
+        write_Txt = (TextView)findViewById(R.id.write_Txt);
+        dialog_edit = (EditText)findViewById(R.id.dialog_edit);
+        photo_Btn = (Button)findViewById(R.id.photo_Btn);
 
 
         mButton.setOnClickListener(this);
@@ -57,7 +67,54 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
                 startActivity(intent3);
             }
         });
+
+        write_Txt.setOnClickListener(this);
+
     }
+
+   // public void mOnClick(View v) {
+
+
+//        switch(v.getId()) {
+//            case R.id.write_Txt:
+//
+//                LayoutInflater inflater = getLayoutInflater();
+//
+//                final View dialogView = inflater.inflate(R.layout.dialog_write, null);
+//
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                builder.setTitle("Write");
+//                builder.setIcon(android.R.drawable.ic_menu_add);
+//                builder.setView(dialogView);
+//                builder.setPositiveButton("완료", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        EditText dialog_edit = (EditText)dialogView.findViewById(R.id.dialog_edit);
+//
+//                        String name = dialog_edit.getText().toString();
+//
+//                        String s = name+" "+nation+"\n";
+//                        str+= s;
+//                        text.setText(str);
+//
+//                        Toast.makeText(Mypage_Write.this, "글 내용이 추가되었습니다.", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast.makeText(Mypage_Write.this, "글쓰기를 취소하였습니다.", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                AlertDialog dialog = builder.create();
+//
+//                dialog.setCanceledOnTouchOutside(false);
+//
+//                dialog.show();
+//
+//                break;
+//        }
+//    }
     //카메라에서 이미지 가져오기
     private void doTakePhotoAction()
     {
@@ -148,11 +205,41 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
                 dialog.dismiss();
             }
         };
-        new AlertDialog.Builder(this).setTitle("업로드할 이미지 선택")
-                .setPositiveButton("사진촬영", cameraListener)
-                .setNeutralButton("앨범선택", albumListener)
-                .setNegativeButton("취소", cancelListener)
-                .show();
+        if(v.equals(photo_Btn)) {
+            new AlertDialog.Builder(this).setTitle("업로드할 이미지 선택")
+                    .setPositiveButton("사진촬영", cameraListener)
+                    .setNeutralButton("앨범선택", albumListener)
+                    .setNegativeButton("취소", cancelListener)
+                    .show();
+        } else if(v.equals(write_Txt)) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Title");
+            alert.setMessage("Message");
+            // Set an EditText view to get user input
+
+            final EditText input = new EditText(this);
+            alert.setView(input);
+            alert.setPositiveButton("완료", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    String value = input.getText().toString();
+                    value.toString();
+                    write_Txt.setText(value);
+                    Toast.makeText(Mypage_Write.this, "글 내용이 추가되었습니다.", Toast.LENGTH_SHORT).show();
+                    // Do something with value!
+                }
+
+            });
+
+            alert.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+                    Toast.makeText(Mypage_Write.this, "글쓰기를 취소하였습니다.", Toast.LENGTH_SHORT).show();
+                }
+            });
+            alert.show();
+        }
     }
 }
 
