@@ -1,30 +1,44 @@
 package com.example.song.newsnts;
 
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import static com.example.song.newsnts.R.id.listView1;
+
 /**
  * Created by EOM on 2015-08-20.
  */
-public class Fragment1 extends Fragment {
+public class Fragment1 extends ListFragment {
 
-    ListView listView1;
+    //ListView listView1;
     FriendChatListAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment1, container, false);
+        //LayoutInflater inflater = (LayoutInflater) getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+
+        //LinearLayout rootView = (LinearLayout) inflater.inflate( R.layout.fragment1, null );
+        //LinearLayout rootView = (ViewGroup) inflater.inflate(R.layout.fragment1, container, false);
+
+        View view = inflater.inflate(R.layout.fragment1, null);
+        //ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, LIST_MENU);
+
+        ListView listview = (ListView) view.findViewById(listView1) ;
+
+
+        //listview.setAdapter(adapter) ;
 
 
         // 리스트뷰 객체 참조
 
         // 어댑터 객체 생성
-        /*adapter = new FriendChatListAdapter(this);
+        adapter = new FriendChatListAdapter(getActivity());
 
         // 아이템 데이터 만들기
         Resources res = getResources();
@@ -44,23 +58,12 @@ public class Fragment1 extends Fragment {
        
 
         // 리스트뷰에 어댑터 설정
-        listView1.setAdapter(adapter);*/
+        listview.setAdapter(adapter) ;
 
-        // 새로 정의한 리스너로 객체를 만들어 설정
-       /* listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ((ViewGroup)listview.getParent()).removeView(listview);
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FriendChatListItem curItem = (FriendChatListItem) adapter.getItem(position);
-                String[] curData = curItem.getData();
-
-                Toast.makeText(getApplicationContext(), "Selected : " + curData[0], Toast.LENGTH_LONG).show();
-
-            }
-
-        });*/
+        return listview;
 
 
-        return rootView;
     }
 }

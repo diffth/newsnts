@@ -23,9 +23,12 @@ public class FriendChatListAdapter extends BaseAdapter {
 	public FriendChatListAdapter() {
 
 	}
-	/*public FriendChatListAdapter(Context context) {
+
+	public FriendChatListAdapter(Context context) {
 		mContext = context;
-	}*/
+	}
+
+
 
 	public void addItem(FriendChatListItem it) {
 		mItems.add(it);
