@@ -16,7 +16,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimaryDark"
+                android:background="#FF9900"
                 android:elevation="1dp"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#FFFFFF"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             </FrameLayout >
@@ -41,7 +42,7 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFCC00"
+                android:background="#FF9900"
                 android:layout_gravity="bottom"
                 android:elevation="1dp"
                 app:tabGravity="fill"
