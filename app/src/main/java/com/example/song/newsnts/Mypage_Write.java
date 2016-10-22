@@ -6,9 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +18,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 
 public class Mypage_Write extends Activity implements View.OnClickListener {
 
@@ -29,7 +37,7 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
     private Button mButton;
     public static String value = "";
 
-    TextView my_Location;
+    EditText my_Location;
     Button ok_Btn;
     TextView write_Txt;
     ImageView photo_imageView;
@@ -43,7 +51,7 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
 
         mButton = (Button) findViewById(R.id.photo_Btn);
         mPhotoImageView = (ImageView) findViewById(R.id.photo_imageView);
-        my_Location = (TextView) findViewById(R.id.my_Location);
+        my_Location = (EditText) findViewById(R.id.my_Location);
         ok_Btn = (Button) findViewById(R.id.ok_Btn);
         write_Txt = (TextView)findViewById(R.id.write_Txt);
         dialog_edit = (EditText)findViewById(R.id.dialog_edit);
@@ -52,17 +60,12 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
 
         mButton.setOnClickListener(this);
 
-        my_Location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent2 = new Intent(Mypage_Write.this, Location.class);
-                startActivity(intent2);
-            }
-        });
 
         ok_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                insert();
                 Intent intent3 = new Intent(Mypage_Write.this, Mypage_Cardview.class);
                 startActivity(intent3);
             }
@@ -72,49 +75,75 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
 
     }
 
-   // public void mOnClick(View v) {
+    public void insert() {
 
 
-//        switch(v.getId()) {
-//            case R.id.write_Txt:
-//
-//                LayoutInflater inflater = getLayoutInflater();
-//
-//                final View dialogView = inflater.inflate(R.layout.dialog_write, null);
-//
-//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//                builder.setTitle("Write");
-//                builder.setIcon(android.R.drawable.ic_menu_add);
-//                builder.setView(dialogView);
-//                builder.setPositiveButton("완료", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        EditText dialog_edit = (EditText)dialogView.findViewById(R.id.dialog_edit);
-//
-//                        String name = dialog_edit.getText().toString();
-//
-//                        String s = name+" "+nation+"\n";
-//                        str+= s;
-//                        text.setText(str);
-//
-//                        Toast.makeText(Mypage_Write.this, "글 내용이 추가되었습니다.", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        Toast.makeText(Mypage_Write.this, "글쓰기를 취소하였습니다.", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                AlertDialog dialog = builder.create();
-//
-//                dialog.setCanceledOnTouchOutside(false);
-//
-//                dialog.show();
-//
-//                break;
-//        }
-//    }
+        String content = write_Txt.getText().toString();
+        String location = my_Location.getText().toString();
+
+
+        insertToDatabase(content,location);
+    }
+
+    private void insertToDatabase(String content,String location){
+        class InsertData extends AsyncTask<String, Void, String> {
+            //   ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                //   loading = ProgressDialog.show(userFormView.this, "Please Wait", null, true, true);
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                try{
+                    String content = (String)params[0];
+                    String location = (String)params[1];
+
+
+                    String link="http://52.69.109.184/write.php";
+                    String data = URLEncoder.encode("content", "UTF-8") + "=" + URLEncoder.encode(content, "UTF-8");
+                    data += "&" + URLEncoder.encode("location", "UTF-8") + "=" + URLEncoder.encode(location, "UTF-8");
+
+                    Log.i("확인", data+"\n" );
+
+                    URL url = new URL(link);
+                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                    conn.setDoInput(true);
+                    conn.setDoOutput(true);
+                    OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+                    wr.write( data );
+                    Log.i("확인", data+"\n");
+                    wr.flush();
+
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    StringBuilder sb = new StringBuilder();
+                    String line = null;
+
+                    // Read Server Response
+                    while((line = reader.readLine()) != null)
+                    {
+                        sb.append(line);
+                        break;
+                    }
+                    Log.i("확인", sb.toString());
+                    return sb.toString();
+                }catch(Exception e){
+                    return new String("Exception: " + e.getMessage());
+                }
+
+            }
+        }
+
+        InsertData task = new InsertData();
+        task.execute(content,location);
+    }
+
+
     //카메라에서 이미지 가져오기
     private void doTakePhotoAction()
     {
@@ -242,7 +271,3 @@ public class Mypage_Write extends Activity implements View.OnClickListener {
         }
     }
 }
-
-
-
-

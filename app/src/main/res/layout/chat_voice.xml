@@ -25,7 +25,8 @@
         android:text="녹음 중지"
         android:id="@+id/stop"
         android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/record" />
+        android:layout_toStartOf="@+id/record"
+        android:background="@drawable/button"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
         android:text="재생"
         android:id="@+id/play"
         android:layout_below="@+id/stop"
-        android:layout_alignStart="@+id/stop" />
+        android:layout_alignStart="@+id/stop"
+        android:background="@drawable/button"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -41,7 +43,8 @@
         android:text="재생중지"
         android:id="@+id/playstop"
         android:layout_below="@+id/send"
-        android:layout_toEndOf="@+id/record" />
+        android:layout_toEndOf="@+id/record"
+        android:background="@drawable/button"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -49,7 +52,8 @@
         android:text="보내기"
         android:id="@+id/send"
         android:layout_alignTop="@+id/stop"
-        android:layout_toEndOf="@+id/record" />
+        android:layout_toEndOf="@+id/record"
+        android:background="@drawable/button"/>
 
 
 

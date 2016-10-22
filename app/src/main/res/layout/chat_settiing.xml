@@ -15,5 +15,6 @@
         android:text="설정화면~~"
         android:id="@+id/button"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button" />
 </RelativeLayout>

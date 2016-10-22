@@ -9,14 +9,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/profile_Img"
             android:layout_margin="20dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@mipmap/ic_launcher"/>
 
         <LinearLayout
@@ -35,11 +35,11 @@
                 android:layout_marginBottom="4dp"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/my_Location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"
+                android:textSize="15dp"
                 android:textStyle="bold"
                 android:hint="어디에 계세요?"/>
 
@@ -80,17 +80,19 @@
         <Button
             android:id="@+id/photo_Btn"
             android:layout_width="150dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginRight="20dp"
             android:onClick="onButton1Clicked"
-            android:text="사진 가져오기" />
+            android:text="사진 가져오기"
+            android:background="@drawable/button"/>
 
         <Button
             android:id="@+id/ok_Btn"
             android:layout_width="150dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:onClick="onButton1Clicked"
-            android:text="완료" />
+            android:text="완료"
+            android:background="@drawable/button"/>
 
     </LinearLayout>
 
