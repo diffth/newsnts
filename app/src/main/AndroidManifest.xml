@@ -21,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AnotherActivity"
+            android:label="@string/bottom_sheet_behavior"
+            android:theme="@style/Theme.AppCompat.Dialog">
+        </activity>
+        <activity android:name=".Fragment2" />
         <activity android:name=".chat_voice" />
         <activity android:name=".chat_settiing" />
         <activity android:name=".chat" />
