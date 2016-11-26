@@ -5,7 +5,10 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
             <!--  // Toolbar layout for actionbar  -->
             <android.support.v7.widget.Toolbar
@@ -32,19 +35,21 @@
 
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:src="@android:drawable/ic_dialog_email"
-            android:layout_marginBottom="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="27dp"
-            android:layout_marginEnd="27dp"
-            android:onClick="onMenu1PBClick"/>
+        android:id="@+id/fab"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_dialog_email"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="48dp"
+        android:layout_marginEnd="48dp"
+        android:onClick="onMenu1PBClick"/>
+
 
 
     </android.support.design.widget.CoordinatorLayout>
+
 </RelativeLayout>

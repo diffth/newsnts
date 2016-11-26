@@ -1,11 +1,8 @@
 package com.example.song.newsnts;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class AnotherActivity extends Activity {
 
@@ -27,10 +24,10 @@ public class AnotherActivity extends Activity {
 
     }
 
-    public void onMenu1Click(View v){
+    /*public void onMenu1Click(View v){
 
         Intent intent = new Intent(getApplicationContext(),AnotherActivity.class);
         startActivityForResult(intent, REQUEST_CODE_ANOTHER);
-    }
+    }*/
 
 }
